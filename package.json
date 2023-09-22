@@ -6,9 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "server": "nodemon server.js",
-    "data:import": "node seeder",
-    "data:destroy": "node seeder -d"
+    "server": "nodemon server.js"
   },
   "author": "Prashant Maurya",
   "license": "ISC",
