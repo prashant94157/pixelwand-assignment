@@ -6,6 +6,8 @@ import morgan from 'morgan';
 import cors from 'cors';
 
 import connectDB from './config/db.js';
+import { errorHandler, notFound } from './middlewares/errorMiddlewares.js';
+import sessionRoutes from './routes/sessionRoutes.js';
 
 dotenv.config();
 
@@ -20,9 +22,14 @@ if (process.env.NODE_ENV === 'development') {
 app.use(express.json());
 app.use(cors());
 
+app.use('/api/v1/users', sessionRoutes);
+
 app.get('/', (req, res) => {
   res.send('API is running!!!');
 });
+
+app.use(notFound);
+app.use(errorHandler);
 
 const PORT = process.env.PORT;
 
